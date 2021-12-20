@@ -21,7 +21,7 @@ if (!isset($_SESSION["login"])){
 
 if (!isset($_POST["logout"]) || $_POST["logout"] == "" ){
     if ($userLoginImpl->isLogin()){
-        header("Location: /api/product.php");
+        header("Location: /product");
         exit();
     } else {
         if (!isset($_POST['username']) || !isset($_POST['password']) || $_POST['username'] == "" || $_POST['password'] == "") {
@@ -32,7 +32,7 @@ if (!isset($_POST["logout"]) || $_POST["logout"] == "" ){
 
             if ($userLoginImpl->login($username, $password)) {
                 echo json_encode(array("status" => "success", "message" => "Login successful"));
-                header("Location: /api/product.php");
+                header("Location: /product");
                 exit();
             } else {
                 echo $userLoginImpl->register($username, $password);

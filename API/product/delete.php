@@ -21,13 +21,13 @@ $productService = new ModelServices($productModel);
 if (!isset($_POST["logout"]) || $_POST["logout"] == "" ){
 
     if (!isset($_SESSION["login"]) || $_SESSION["login"] == false){
-        header("Location: /api/auth.php");
+        header("Location: /auth");
         exit();
     } else {
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             echo $productService->showAllProduct();
         } else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            echo $productService->saveProduct();
+            echo $productService->deleteProduct();
         } else {
             echo json_encode(array("error" => "Method not allowed"));
         }
